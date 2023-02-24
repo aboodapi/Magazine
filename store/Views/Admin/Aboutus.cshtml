@@ -1,0 +1,30 @@
+﻿@model IEnumerable<store.Models.About>
+
+@{
+    ViewData["Title"] = "Aboutus";
+    Layout = "~/Views/Shared/_adminhome.cshtml";
+}
+ 
+<!-- About Details -->
+<div class="psot-details pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="about-details-cap">
+                    <h2>About Us</h2>
+                </div>
+            </div>
+            @foreach(var item in Model)
+            {
+                <div class="col-lg-10">
+                    <div class="about-details-cap">
+                        <p class="mb-30">
+                            @Html.DisplayFor(modelItem => item.About1)
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- About Details End -->

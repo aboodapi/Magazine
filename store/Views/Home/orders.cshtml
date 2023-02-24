@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Order>
+
+@{
+
+    ViewData["Title"] = "orders";
+    //Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    var userId = ViewBag.userid;
+    decimal totalpayment = 0;
+}
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+
+
+
+    <section class="h-100 gradient-custom">
+        <div class="container py-5">
+            <div class="row d-flex justify-content-center my-4">
+                <div class="col-md-8">
+                    @foreach (var item in Model)
+                    {
+                        @if (item.Status == 1)
+                        {
+                            if (item.UserId == userId)
+                            {
+                                <div class="card mb-4">
+                                    <div class="card-header py-3">
+                                        <h5 class="mb-0">@item.Product.Title</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- Single item -->
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 ">
+                                                <!-- Image -->
+                                                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                                                    <img src=@Url.Content("~/Images/" + item.Product.Imagepath) asp-append-version="true" class="w-100" />                                                                        
+                                                   
+                                                </div>
+                                                <!-- Image -->
+                                            </div>
+                                            <div class="col-lg-5 col-md-5 mb-4 mb-lg-0 align-items-center">
+                                                <!-- Data -->
+                                                <p><strong>Product name: </strong>@item.Product.Title</p>
+                                                <strong>Quantity: </strong>@item.Quantity <br><br>
+                                                <strong>Price: </strong>@item.Product.Price <br><br>
+                                                <strong>Total: </strong>@(item.Product.Price * item.Quantity)
+                                                <!-- Data -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                    <div class="row-cols-3">
+                        <a class="btn btn-primary btn-lg btn-block" href="~/Home/Index">Add Products...</a>
+                    </div>
+                    <br />
+                    <div class="card mb-4 mb-lg-0">
+                        <div class="card-body">
+                            <p><strong>We accept</strong></p>
+                            <img class="me-2" style="width:45px"
+                                 src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                                 alt="Visa" />
+                            <img class="me-2" style="width:45px"
+                                 src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                                 alt="American Express" />
+                            <img class="me-2" style="width:45px"
+                                 src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                                 alt="Mastercard" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="mb-0">Summary</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                @foreach (var item1 in Model)
+                                {
+                                    if (item1.UserId == userId)
+                                        {
+                                            @if (item1.Status == 1)
+                                            {
+                                    <ul>
+                                        <label  asp-for=@item1.Dateto class="control-label"></label>
+                                        <input asp-for=@item1.Dateto class="form-control" />
+                                        <span asp-validation-for=@item1.Dateto class="text-danger"></span>
+                                    </ul>                                   
+                                }}}
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                    Products
+
+                                    @foreach (var item1 in Model)
+                                    {
+                                        if (item1.UserId == userId)
+                                        {
+                                            @if (item1.Status == 1)
+                                            {
+                                                totalpayment += Convert.ToDecimal(item1.Quantity * item1.Product.Price);
+                                            }
+                                        }
+                                    }
+                                    $ @totalpayment
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    Shipping
+                                    <span>Free</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                    <div>
+                                        <strong>Total amount</strong>
+                                        <strong>
+                                            <p class="mb-0">(including VAT)</p>
+                                        </strong>
+                                    </div>
+                                    <span><strong>$ @totalpayment</strong></span>
+                                </li>
+                            </ul>
+                            <a class="btn btn-primary btn-lg btn-block" asp-action="Checkout" asp-route-id="@totalpayment">
+                                Checkout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

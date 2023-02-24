@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_dashboardLayout.cshtml";
+
+}
+<h1>Info </h1>
+
+<div class="card-group">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Coustomer registered</h5>
+            <p class="card-text">@ViewBag.countUser</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Magazines Count</h5>
+            <p class="card-text">@ViewBag.magazinescount</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Magazines Publish</h5>
+            <p class="card-text">@ViewBag.publish</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Magazines Unpublish</h5>
+            <p class="card-text">@ViewBag.unpublish</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Message Request</h5>
+            <p class="card-text">@ViewBag.contact</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Testimonials Request</h5>
+            <p class="card-text">@ViewBag.test</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Total Orders</h5>
+            <p class="card-text">@ViewBag.orders</p>
+        </div>
+    </div>
+</div>
+
+<br />

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<store.Models.Order>
+
+@{
+    Layout = "~/Views/Shared/_CustomerdashboardLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width" />
+    <title>invoice</title>
+</head>
+<body>
+    <table class="table" id="datatable">
+        <thead>
+            <tr>
+                <th>
+                    Customer Name
+                </th>
+                <th>
+                    Product Name
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Total Price
+                </th>
+                <th>
+                    Payment
+                </th>
+                <th>
+                    Order Date From
+                </th>
+                <th>
+                    Order Date To
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.User.Fname @item.User.Lname
+                    </td>
+                    <td>
+                        @item.Product.Title
+                    </td>
+                    <td>
+                        @item.Product.Price$
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        @(item.Product.Price * item.Quantity)$
+                    </td>
+                    <td>
+                        @item.Pay.Type
+                    </td>
+                    <td>
+                        @item.Datefrom
+                    </td>
+                    <td>
+                        @item.Dateto
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

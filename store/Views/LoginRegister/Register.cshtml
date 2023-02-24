@@ -1,0 +1,211 @@
+﻿@model store.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Magazine Store</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="~/site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="~/loginassets/img/favicon.ico">
+    <link rel="manifest" href="~/site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="~/loginassets/img/favicon.ico">
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Magazine Store</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="~/site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="~/loginassets/img/favicon.ico">
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Magazine Store</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="~/site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="~/loginassets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/loginassets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/loginassets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/loginassets/css/slicknav.css">
+    <link rel="stylesheet" href="~/loginassets/css/flaticon.css">
+    <link rel="stylesheet" href="~/loginassets/css/progressbar_barfiller.css">
+    <link rel="stylesheet" href="~/loginassets/css/gijgo.css">
+    <link rel="stylesheet" href="~/loginassets/css/animate.min.css">
+    <link rel="stylesheet" href="~/loginassets/css/animated-headline.css">
+    <link rel="stylesheet" href="~/loginassets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/loginassets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/loginassets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/loginassets/css/slick.css">
+    <link rel="stylesheet" href="~/loginassets/css/nice-select.css">
+    <link rel="stylesheet" href="~/loginassets/css/style.css">
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="loginassets/img/logo/loder.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start-->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area">
+            <div class="main-header ">
+                <div class="header-top ">
+                    <div class="container-fluid">
+                        <div class="col-6">
+                            <div class="row d-flex justify-content-lg-between align-items-center">
+                                <a href="/home/index"><h1>Magazine Store</h1></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+        <!-- Register Area Start -->
+        <div class="register-form-area">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-lg-8">
+                        <div class="register-form text-center">
+                            <form asp-action="Register" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <!-- Login Heading -->
+                                <div class="register-heading">
+                                    <span>Sign Up</span>
+                                    <p>Create your account to get full access</p>
+                                </div>
+                                <!-- Single Input Fields -->
+                                <div class="input-box">
+                                    <div class="single-input-fields">
+                                        <label>First Name</label>
+                                        <input asp-for="Fname" class="form-control" required placeholder="Enter Your First Name" required />
+                                        <span asp-validation-for="Fname" class="text-danger"></span>
+                                    </div>
+                                    <div class="single-input-fields">
+                                        <label>Last Name</label>
+                                        <input asp-for="Lname" class="form-control" required placeholder="Enter Your Last Name" required />
+                                        <span asp-validation-for="Lname" class="text-danger"></span>
+                                    </div>
+                                    <div class="single-input-fields">
+                                        <label asp-for="Email" class="control-label"></label>
+                                        <input asp-for="Email" class="form-control" required />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="single-input-fields">
+                                        <label asp-for="Password" class="control-label"></label>
+                                        <input asp-for="Password" required type="password" class="form-control" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                    <div class="single-input-fields">
+                                        <label>Profile Image</label>
+                                        <input asp-for="ImageFile" class="form-control" />
+                                        <span asp-validation-for="ImageFile" required class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="submit" value="Sign Up" class="submit-btn3" />
+                                    <a href="Login"><p>I am already member</p></a>
+                                </div>
+                                @if(ViewBag.msg != null)
+                                {
+                                    <script type="text/javascript">
+                                        window.onload = function()
+                                        {
+                                            alert("@ViewBag.msg");
+                                        };
+                                    </script>
+                                }
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Register Area End -->
+    </main>
+
+    <div id="back-top">
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+    <!-- JS here -->
+
+    <script src="~/loginassets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="~/loginassets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/loginassets/js/popper.min.js"></script>
+    <script src="~/loginassets/js/bootstrap.min.js"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="~/loginassets/js/jquery.slicknav.min.js"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="~/loginassets/js/owl.carousel.min.js"></script>
+    <script src="~/loginassets/js/slick.min.js"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="~/loginassets/js/wow.min.js"></script>
+    <script src="~/loginassets/js/animated.headline.js"></script>
+    <script src="~/loginassets/js/jquery.magnific-popup.js"></script>
+
+    <!-- Date Picker -->
+    <script src="~/loginassets/js/gijgo.min.js"></script>
+    <!-- Nice-select, sticky -->
+    <script src="~/loginassets/js/jquery.nice-select.min.js"></script>
+    <script src="~/loginassets/js/jquery.sticky.js"></script>
+    <!-- Progress -->
+    <script src="~/loginassets/js/jquery.barfiller.js"></script>
+
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="~/loginassets/js/jquery.counterup.min.js"></script>
+    <script src="~/loginassets/js/waypoints.min.js"></script>
+    <script src="~/loginassets/js/jquery.countdown.min.js"></script>
+    <script src="~/loginassets/js/hover-direction-snake.min.js"></script>
+
+    <!-- contact js -->
+    <script src="~/loginassets/js/contact.js"></script>
+    <script src="~/loginassets/js/jquery.form.js"></script>
+    <script src="~/loginassets/js/jquery.validate.min.js"></script>
+    <script src="~/loginassets/js/mail-script.js"></script>
+    <script src="~/loginassets/js/jquery.ajaxchimp.min.js"></script>
+
+    <!-- Jquery Plugins, main Jquery -->
+    <script src="~/loginassets/js/plugins.js"></script>
+    <script src="~/loginassets/js/main.js"></script>
+
+</body>
+</html>

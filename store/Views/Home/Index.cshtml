@@ -1,0 +1,64 @@
+﻿@model Tuple<IEnumerable<Category>,IEnumerable<Product>,IEnumerable<Testimonial>>
+
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    ViewData["Title"] = "Home Page";
+}
+
+<main>
+    <div class="banner-news">
+        <div class="container-fluid p-0">
+            <div class="banner-slider-active no-gutters ">                
+                @foreach (var item in Model.Item1)
+                {
+                    <div class="single-sliders">
+                        <div class="single-baner-nw mb-30 text-center">
+                            <div class="banner-img-cap">
+                                <div class="banner-img">
+                                    <img src=@Url.Content("~/Images/" + item.Imagepath) asp-append-version="true" width="100" height="300" />
+                                </div>
+                                <div class="banner-cap">
+                                    <p>
+                                        <a href="/home/product/@item.Id" style="color:darkblue">@item.Name</a>
+                                    </p>
+                                    <h3> Calling time on irresponsible junk food advertising to children</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<!--testiomnials-->
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="heading-section mb-5">Testimonials</h2>
+            </div>
+            <div class="col-md-12">
+                <div class="featured-carousel owl-carousel">
+                    @foreach (var item in Model.Item3)
+                    {
+                            <div class="item">
+                                <div class="testimony-wrap d-flex">
+                                <img src=@Url.Content("~/Images/" + item.Users.Imagepath) asp-append-version="true" style="border-radius:50%;" width="100" height="100" />
+                                <div class="text pl-4">
+                                        <span class="quote d-flex align-items-center justify-content-center">
+                                            <i class="isageon-ios-quote"></i>
+                                        </span>
+                                        <p class="name" style="font-family:Algerian">@item.Users.Fname @item.Users.Lname</p>
+                                        <p style="font-family:Arial">@item.Message</p>
+                                    </div>
+                                </div>
+                            </div>                        
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

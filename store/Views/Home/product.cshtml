@@ -1,0 +1,58 @@
+﻿@model IEnumerable<store.Models.Product>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!-- Latest Posts Area -->
+<div class="latest-posts pt-80 pb-80">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-tittle mb-35">
+                    <h2>Latest Products</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <form method="post" asp-action="product">
+                <h3>
+                    <div class="form-box f-left ">
+                        <input type="text" name="find" class="form-box f-right " placeholder="Search your interest..." />
+                        <input type="submit" value="Search" />
+                    </div>
+                </h3>
+            </form>
+            @foreach (var item in Model)
+            {
+            <div class="col-lg-4 col-md-6">
+                <div class="single-baner-nw2 mb-30">
+                    <div class="banner-img-cap2">
+                        <div class="banner-img">
+                            <img src=@Url.Content("~/Images/" + item.Imagepath) asp-append-version="true" width="100" height="300" />
+                        </div>
+                        <div class="banner-cap2">                                
+                            <h3>
+                                    <h1>@item.Title </h1>
+                                    <h2>Price:@item.Price$</h2>
+                                    @if (ViewBag.UserID2 == null)
+                                    {
+                                        <a href="/LoginRegister/Login" class="genric-btn primary"  >ADD TO CARD</a>
+                                    }
+                                    else if (ViewBag.UserID2 != null)
+                                    {
+                                        <a asp-action="add" class="genric-btn primary" asp-route-id="@item.Id">ADD TO CARD</a>
+                                                                                
+                                    }
+                                </h3>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            }
+        </div>
+    </div>
+</div>
